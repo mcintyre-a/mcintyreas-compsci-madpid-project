@@ -1,1 +1,23 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" x="0" y="0"/></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable type="BLOCKLY_TILESET_TYPE" id="`5|vu=gTWw2;rF$g5U:Z">0;16;16;0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</variable></variables><block type="pxt-on-start" id="FiuRD:w=w;nAnhev0Zw$" x="0" y="0"><statement name="HANDLER"><block type="gamesetbackgroundcolor" id="n!Pb:-328@4to~^Scva}"><value name="color"><shadow type="colorindexpicker" id="c[U,F8K*:+p!2P{L)A88"><field name="index">8</field></shadow></value><next><block type="tilemap_editor" id="H^r59O6yY-lNgs!NG4Ao"><field name="tilemap">tiles.createTilemap(
+            hex`100010000c08080808080808080808080808080d0f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110e0a0a0a0a0a0a0a0a0a0a0a0a0a0a07`,
+            img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`,
+            [myTiles.tile0,sprites.castle.rock2,sprites.castle.rock0,sprites.builtin.forestTiles0,sprites.castle.tileDarkGrass2,sprites.castle.tileGrass2,sprites.builtin.forestTiles12,sprites.builtin.forestTiles15,sprites.builtin.forestTiles6,sprites.builtin.forestTiles14,sprites.builtin.forestTiles10,sprites.builtin.forestTiles22,sprites.builtin.forestTiles5,sprites.builtin.forestTiles7,sprites.builtin.forestTiles13,sprites.builtin.forestTiles9,sprites.builtin.forestTiles18,sprites.builtin.forestTiles11],
+            TileScale.Sixteen
+        )</field><next><block type="gameSplash" id="ef_n8iS6.3~oX+|D]en0"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="title"><shadow type="text" id="C~Y=$VZA.I3Q]qN^f)|$"><field name="TEXT">WELCOME</field></shadow></value><next><block type="game_dialog_set_text_color" id=";8dL*Jd,%SX/}HU6N|il"><value name="color"><shadow type="colorindexpicker" id="gPW:V_ZL==QU=?j:owAj"><field name="index">7</field></shadow></value><next><block type="game_show_long_text" id="v0Jm{a1@.qxb~$42X1uw"><field name="layout">DialogLayout.Center</field><value name="str"><shadow type="text" id="}{qZ51s+9e]j4DvGxj#;"><field name="TEXT">SO YOU WANT TO WIN THE MAZE OF ETERNITY? DO YOU HAVE WHAT IT TAKES?</field></shadow></value><next><block type="game_show_long_text" id="wsAoL#0Rw^z1/n0-m-6_"><field name="layout">DialogLayout.Center</field><value name="str"><shadow type="text" id="o:e5_WDks0wNzdrb[+(r"><field name="TEXT">USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE. PRESS A TO JUMP OVER PAST AN OBSTACLE AND MOVE 2 SPACES. PRESS B TO PAUSE THE GAME. READY?</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
