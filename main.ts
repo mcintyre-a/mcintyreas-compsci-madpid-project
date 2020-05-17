@@ -31,6 +31,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
         info.changeLifeBy(-1)
     }
 })
+info.onLifeZero(function () {
+    let mySprite: Sprite = null
+    mySprite.destroy()
+    game.over(false)
+    game.splash("OH DEAR! YOU RAN OUT OF LIVES AND DIED. PRESS A TO CONTINUE")
+})
 function Boost () {
     BoostEval = 1
     game.splash("BOOST")
@@ -68,7 +74,7 @@ tiles.setTilemap(tiles.createTilemap(
 game.splash("WELCOME")
 game.setDialogTextColor(7)
 game.showLongText("SO YOU WANT TO WIN ? DO YOU HAVE WHAT IT TAKES?", DialogLayout.Center)
-game.showLongText("USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE. PRESS B TO BOOST IF YOU HAVE FOOD. READY?", DialogLayout.Center)
+game.showLongText("USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE LEFT/RIGHT. PRESS B TO BOOST IF YOU HAVE FOOD. READY?", DialogLayout.Center)
 Character = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f f f f f f 4 4 4 4 f f f f f f 
@@ -89,6 +95,6 @@ f f f f f 5 5 f f 5 5 f f f f f
 `, SpriteKind.Player)
 info.setScore(0)
 info.setLife(3)
-Character.setPosition(10, 9)
-controller.moveSprite(Character, 100, 100)
+Character.setPosition(22, 107)
+controller.moveSprite(Character, 100, 0)
 Character.setFlag(SpriteFlag.StayInScreen, true)
