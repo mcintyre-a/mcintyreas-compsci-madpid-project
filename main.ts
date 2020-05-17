@@ -19,6 +19,28 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    Boost()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (1 == BoostEval) {
+        info.changeScoreBy(10)
+        info.changeLifeBy(1)
+    } else {
+        Character.startEffect(effects.spray)
+        info.changeLifeBy(-1)
+    }
+})
+function Boost () {
+    BoostEval = 1
+    game.splash("BOOST")
+    music.playMelody("C5 F C5 G C5 F C5 G ", 300)
+    pause(5000)
+    music.stopAllSounds()
+    BoostEval = 0
+}
+let BoostEval = 0
+let Character: Sprite = null
 scene.setBackgroundColor(8)
 tiles.setTilemap(tiles.createTilemap(
             hex`100010000c08080808080808080808080808080d0f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110f0a0a0a0a0a0a0a0a0a0a0a0a0a0a110e0a0a0a0a0a0a0a0a0a0a0a0a0a0a07`,
@@ -45,9 +67,9 @@ tiles.setTilemap(tiles.createTilemap(
         ))
 game.splash("WELCOME")
 game.setDialogTextColor(7)
-game.showLongText("SO YOU WANT TO WIN THE MAZE OF ETERNITY? DO YOU HAVE WHAT IT TAKES?", DialogLayout.Center)
-game.showLongText("USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE. PRESS A TO JUMP OVER PAST AN OBSTACLE AND MOVE 2 SPACES. PRESS B TO PAUSE THE GAME. READY?", DialogLayout.Center)
-let Character = sprites.create(img`
+game.showLongText("SO YOU WANT TO WIN ? DO YOU HAVE WHAT IT TAKES?", DialogLayout.Center)
+game.showLongText("USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE. PRESS B TO BOOST IF YOU HAVE FOOD. READY?", DialogLayout.Center)
+Character = sprites.create(img`
 f f f f f f f f f f f f f f f f 
 f f f f f f 4 4 4 4 f f f f f f 
 f f f f f f 4 f f 4 f f f f f f 
@@ -65,6 +87,8 @@ f f f f f 5 5 f f 5 5 f f f f f
 f f f f f 5 5 f f 5 5 f f f f f 
 f f f f f 5 5 f f 5 5 f f f f f 
 `, SpriteKind.Player)
+info.setScore(0)
+info.setLife(3)
 Character.setPosition(10, 9)
 controller.moveSprite(Character, 100, 100)
 Character.setFlag(SpriteFlag.StayInScreen, true)
