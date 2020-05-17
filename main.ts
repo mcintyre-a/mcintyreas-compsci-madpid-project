@@ -47,3 +47,24 @@ game.splash("WELCOME")
 game.setDialogTextColor(7)
 game.showLongText("SO YOU WANT TO WIN THE MAZE OF ETERNITY? DO YOU HAVE WHAT IT TAKES?", DialogLayout.Center)
 game.showLongText("USE THE ARROWS/JOYSTICK TO MOVE YOUR SPRITE. PRESS A TO JUMP OVER PAST AN OBSTACLE AND MOVE 2 SPACES. PRESS B TO PAUSE THE GAME. READY?", DialogLayout.Center)
+let Character = sprites.create(img`
+f f f f f f f f f f f f f f f f 
+f f f f f f 4 4 4 4 f f f f f f 
+f f f f f f 4 f f 4 f f f f f f 
+f f f f f f 4 f f 4 f f f f f f 
+f f f f f 7 4 4 4 4 7 f f f f f 
+f f f f f 7 7 7 7 7 7 f f f f f 
+f f f 7 7 7 7 7 7 7 7 7 7 f f f 
+f f 2 2 2 7 7 7 7 7 7 2 2 2 f f 
+f f 2 2 2 7 7 7 7 7 7 2 2 2 f f 
+f f 2 2 2 7 7 7 7 7 7 2 2 2 f f 
+f f f f f 7 7 7 7 7 7 f f f f f 
+f f f f f 7 7 7 7 7 7 f f f f f 
+f f f f f 5 5 f f 5 5 f f f f f 
+f f f f f 5 5 f f 5 5 f f f f f 
+f f f f f 5 5 f f 5 5 f f f f f 
+f f f f f 5 5 f f 5 5 f f f f f 
+`, SpriteKind.Player)
+Character.setPosition(10, 9)
+controller.moveSprite(Character, 100, 100)
+Character.setFlag(SpriteFlag.StayInScreen, true)
