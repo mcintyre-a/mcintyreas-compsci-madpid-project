@@ -19,8 +19,34 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 `
 }
+function FoodLauncher () {
+    Foodstuff = sprites.createProjectileFromSide(img`
+. . . . c c c b b b b b . . . . 
+. . c c b 4 4 4 4 4 4 b b b . . 
+. c c 4 4 4 4 4 5 4 4 4 4 b c . 
+. e 4 4 4 4 4 4 4 4 4 5 4 4 e . 
+e b 4 5 4 4 5 4 4 4 4 4 4 4 b c 
+e b 4 4 4 4 4 4 4 4 4 4 5 4 4 e 
+e b b 4 4 4 4 4 4 4 4 4 4 4 b e 
+. e b 4 4 4 4 4 5 4 4 4 4 b e . 
+8 7 e e b 4 4 4 4 4 4 b e e 6 8 
+8 7 2 e e e e e e e e e e 2 7 8 
+e 6 6 2 2 2 2 2 2 2 2 2 2 6 c e 
+e c 6 7 6 6 7 7 7 6 6 7 6 c c e 
+e b e 8 8 c c 8 8 c c c 8 e b e 
+e e b e c c e e e e e c e b e e 
+. e e b b 4 4 4 4 4 4 4 4 e e . 
+. . . c c c c c e e e e e . . . 
+`, 50, 100)
+}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    Boost()
+    if (Foodstuff > 0) {
+        Boost()
+        Foodstuff += -1
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    Foodstuff += 1
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     if (1 == BoostEval) {
@@ -32,20 +58,21 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     }
 })
 info.onLifeZero(function () {
-    let mySprite: Sprite = null
-    mySprite.destroy()
+    Character.destroy()
     game.over(false)
     game.splash("OH DEAR! YOU RAN OUT OF LIVES AND DIED. PRESS A TO CONTINUE")
 })
 function Boost () {
     BoostEval = 1
     game.splash("BOOST")
-    music.playMelody("C5 F C5 G C5 F C5 G ", 300)
+    scene.cameraShake(4, 2000)
     pause(5000)
     music.stopAllSounds()
     BoostEval = 0
+    music.playMelody("C5 F C5 G C5 F C5 G ", 300)
 }
 let BoostEval = 0
+let Foodstuff = 0
 let Character: Sprite = null
 scene.setBackgroundColor(8)
 tiles.setTilemap(tiles.createTilemap(
@@ -95,6 +122,7 @@ f f f f f 5 5 f f 5 5 f f f f f
 `, SpriteKind.Player)
 info.setScore(0)
 info.setLife(3)
+Foodstuff = 0
 Character.setPosition(22, 107)
 controller.moveSprite(Character, 100, 0)
 Character.setFlag(SpriteFlag.StayInScreen, true)
